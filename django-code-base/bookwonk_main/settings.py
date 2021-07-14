@@ -35,6 +35,7 @@ AUTH_USER_MODEL = "members.Member"
 
 INSTALLED_APPS = [
     'members.apps.MembersConfig',
+    'books.apps.BooksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
