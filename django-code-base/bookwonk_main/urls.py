@@ -19,5 +19,5 @@ from members import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', view=views.hello, name='home'),
+    path('', view=views.index, name='index'),
 ]
