@@ -11,10 +11,9 @@
     <link rel="manifest" href="site.html">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'members/img/favicon.ico' %}">
 
-    <link rel="stylesheet"
-      href="{% static 'members/css/A.bootstrap.min.css%2bowl.carousel.min.css%2bslicknav.css%2bflaticon.css%2banimate.min.css%2bmagnific-popup.css%2bfontawesome-all.min.css%2bthemify-icons.css%2bslick.css%2bnice-select.css%2cMcc.0iN2pgCUFZ' %}" />
+    <link rel="stylesheet" href="{% static 'members/css/boot1.css' %}" />
     <link rel="stylesheet" href="{% static 'members/css/style.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   </head>
 
   <body class="body-bg">
@@ -38,7 +37,8 @@
 
                 <div class="col-xl-2 col-lg-2">
                   <div class="logo">
-                    <a href="index.html"><img src="{% static 'members/img/logo/loader.png' %}" alt="" style="width: 80%;"></a>
+                    <a href="index.html"><img src="{% static 'members/img/logo/loader.png' %}" alt=""
+                        style="width: 80%;"></a>
                   </div>
                 </div>
                 <div class="col-xl-10 col-lg-10">
@@ -77,49 +77,50 @@
 
     </header>
 
-    {% block content %}  {% endblock %}
- 
+    {% block content %} {% endblock %}
+
 
     <footer style="height: 2px; width: auto;">
 
-        <div class="footer-area section-bg" data-background="{% static 'members/img/gallery/footer_bg.jpg' %}">
-          <div class="container">
-            <div class="footer-top footer-padding">
-              <div class="row d-flex justify-content-between">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-4 col-md-12 col-sm-12">
-                  <div class="single-footer-caption mb-50">
-  
-                    <div class="footer-logo" style="text-align: center;">
-                      <a href="index.html"><img src="{% static 'members/img/logo/loader_b.png' %}" alt="" style="width: 40%;"></a>
-                    </div>
-                    <div class="footer-tittle">
-                      <div class="footer-pera" style="text-align: center;">
-                        <p class="info1">Reading made easier</p>
-                      </div>
-                    </div>
-                    <div class="footer-number" style="text-align: center;">
-                      <h4 style="font-size: 1rem;"><span>+91 </span>7597573205</h4>
-                    </div>
-                    <div class="footer-number" style="text-align: center;">
-                      <p style="font-size: 1rem;"><span>bookwonk@gmail.com</span></p>
+      <div class="footer-area section-bg" data-background="{% static 'members/img/gallery/footer_bg.jpg' %}">
+        <div class="container">
+          <div class="footer-top footer-padding">
+            <div class="row d-flex justify-content-between">
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="single-footer-caption mb-50">
+
+                  <div class="footer-logo" style="text-align: center;">
+                    <a href="index.html"><img src="{% static 'members/img/logo/loader_b.png' %}" alt=""
+                        style="width: 40%;"></a>
+                  </div>
+                  <div class="footer-tittle">
+                    <div class="footer-pera" style="text-align: center;">
+                      <p class="info1">Reading made easier</p>
                     </div>
                   </div>
+                  <div class="footer-number" style="text-align: center;">
+                    <h4 style="font-size: 1rem;"><span>+91 </span>7597573205</h4>
+                  </div>
+                  <div class="footer-number" style="text-align: center;">
+                    <p style="font-size: 1rem;"><span>bookwonk@gmail.com</span></p>
+                  </div>
                 </div>
-                <div class="col-lg-4"></div>
               </div>
+              <div class="col-lg-4"></div>
             </div>
-            <div class="footer-bottom">
-              <div class="row d-flex justify-content-between align-items-center">
-                <div class="col-xl-12 col-lg-12">
-                  <div class="footer-copy-right" style="text-align: center;">
-                    <p>
-                      Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-                        href="https://www.linkedin.com/in/harshdas05/" target="_blank">CPG 54</a>
-                    </p>
-                  </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-xl-12 col-lg-12">
+                <div class="footer-copy-right" style="text-align: center;">
+                  <p>
+                    Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                      href="https://www.linkedin.com/in/harshdas05/" target="_blank">CPG 54</a>
+                  </p>
                 </div>
-                <!-- <div class="col-xl-3 col-lg-4">
+              </div>
+              <!-- <div class="col-xl-3 col-lg-4">
   
                   <div class="footer-social f-right">
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -128,106 +129,106 @@
                     <a href="#"><i class="fab fa-instagram"></i></a>
                   </div>
                 </div> -->
-              </div>
             </div>
           </div>
         </div>
-  
-      </footer>
-  
-      <div id="back-top">
-        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
       </div>
-  
-      <script src="{% static 'members/js/vendor/modernizr-3.5.0.min.js' %}"></script>
-  
-      <script src="{% static 'members/js/vendor/jquery-1.12.4.min.js' %}"></script>
-      <!-- <script src="{% static 'members/js/popper.min.js%2bbootstrap.min.js%2bjquery.slicknav.min.js.pagespeed.jc.mVB8-bTutZ.js' %}"> -->
-      </script>
-      <script>
-        eval(mod_pagespeed_5fNOqdqOfw);
-      </script>
-      <script>
-        eval(mod_pagespeed_R9PITu2Kd5);
-      </script>
-  
-      <script>
-        eval(mod_pagespeed_mbp5PMK5jx);
-      </script>
-  
-      <script src="{% static 'members/js/owl.carousel.min.js%2bslick.min.js.pagespeed.jc.0HuYAXhOLP.js' %}"></script>
-      <script>
-        eval(mod_pagespeed_Tg_4Ti9hlJ);
-      </script>
-      <script>
-        eval(mod_pagespeed_u7WMPBCAJS);
-      </script>
-  
-      <script
-        src="{% static 'members/js/wow.min.js%2banimated.headline.js%2bjquery.magnific-popup.js%2bjquery.nice-select.min.js%2bjquery.sticky.js%2bjquery.counterup.min.js%2bcontact.js.pagespeed.jc.KMnQGDwgti.js' %}">
-      </script>
-      <script>
-        eval(mod_pagespeed_F3eouEwgw2);
-      </script>
-      <script>
-        eval(mod_pagespeed_QUl3xDLkEU);
-      </script>
-      <script>
-        eval(mod_pagespeed_WtUP$Z9SdG);
-      </script>
-  
-      <script>
-        eval(mod_pagespeed_gP59kyjSLd);
-      </script>
-      <script>
-        eval(mod_pagespeed_lSLMe$nfkC);
-      </script>
-  
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-      <script>
-        eval(mod_pagespeed_ASOiclejXz);
-      </script>
-  
-      <script>
-        eval(mod_pagespeed_8LeNli2MtO);
-      </script>
-      <script
-        src="{% static 'members/js/jquery.form.js%2bjquery.validate.min.js%2bmail-script.js%2bjquery.ajaxchimp.min.js%2bplugins.js%2bmain.js.pagespeed.jc.JwGkRMqBq6.js' %}">
-      </script>
-      <script>
-        eval(mod_pagespeed_GxNf$Org5k);
-      </script>
-      <script>
-        eval(mod_pagespeed_GCCjp5Ow6S);
-      </script>
-      <script>
-        eval(mod_pagespeed_GwrDqlk9yE);
-      </script>
-      <script>
-        eval(mod_pagespeed_vFjS$ttIlM);
-      </script>
-  
-      <script>
-        eval(mod_pagespeed_vEaLPeOAih);
-      </script>
-      <script>
-        eval(mod_pagespeed_qFfJSWWRkF);
-      </script>
-  
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-  
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-  
-        gtag('config', 'UA-23581568-13');
-      </script>
-      <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon='{"rayId":"66ab3ecedc46d54f","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.6.0","si":10}'>
-      </script>
-    </body>
-  
-  </html>
+
+    </footer>
+
+    <div id="back-top">
+      <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <script src="{% static 'members/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+
+    <script src="{% static 'members/js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <!-- <script src="{% static 'members/js/popper.min.js%2bbootstrap.min.js%2bjquery.slicknav.min.js.pagespeed.jc.mVB8-bTutZ.js' %}"> -->
+    </script>
+    <script>
+      eval(mod_pagespeed_5fNOqdqOfw);
+    </script>
+    <script>
+      eval(mod_pagespeed_R9PITu2Kd5);
+    </script>
+
+    <script>
+      eval(mod_pagespeed_mbp5PMK5jx);
+    </script>
+
+    <script src="{% static 'members/js/owl.carousel.min.js%2bslick.min.js.pagespeed.jc.0HuYAXhOLP.js' %}"></script>
+    <script>
+      eval(mod_pagespeed_Tg_4Ti9hlJ);
+    </script>
+    <script>
+      eval(mod_pagespeed_u7WMPBCAJS);
+    </script>
+
+    <script
+      src="{% static 'members/js/wow.min.js%2banimated.headline.js%2bjquery.magnific-popup.js%2bjquery.nice-select.min.js%2bjquery.sticky.js%2bjquery.counterup.min.js%2bcontact.js.pagespeed.jc.KMnQGDwgti.js' %}">
+    </script>
+    <script>
+      eval(mod_pagespeed_F3eouEwgw2);
+    </script>
+    <script>
+      eval(mod_pagespeed_QUl3xDLkEU);
+    </script>
+    <script>
+      eval(mod_pagespeed_WtUP$Z9SdG);
+    </script>
+
+    <script>
+      eval(mod_pagespeed_gP59kyjSLd);
+    </script>
+    <script>
+      eval(mod_pagespeed_lSLMe$nfkC);
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script>
+      eval(mod_pagespeed_ASOiclejXz);
+    </script>
+
+    <script>
+      eval(mod_pagespeed_8LeNli2MtO);
+    </script>
+    <script
+      src="{% static 'members/js/jquery.form.js%2bjquery.validate.min.js%2bmail-script.js%2bjquery.ajaxchimp.min.js%2bplugins.js%2bmain.js.pagespeed.jc.JwGkRMqBq6.js' %}">
+    </script>
+    <script>
+      eval(mod_pagespeed_GxNf$Org5k);
+    </script>
+    <script>
+      eval(mod_pagespeed_GCCjp5Ow6S);
+    </script>
+    <script>
+      eval(mod_pagespeed_GwrDqlk9yE);
+    </script>
+    <script>
+      eval(mod_pagespeed_vFjS$ttIlM);
+    </script>
+
+    <script>
+      eval(mod_pagespeed_vEaLPeOAih);
+    </script>
+    <script>
+      eval(mod_pagespeed_qFfJSWWRkF);
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-23581568-13');
+    </script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"rayId":"66ab3ecedc46d54f","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.6.0","si":10}'>
+    </script>
+  </body>
+
+</html>
