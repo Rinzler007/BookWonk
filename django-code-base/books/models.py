@@ -10,5 +10,5 @@ class Book(models.Model):
     bookName = models.CharField("Book Name", max_length=50, null=False, blank=False)
     author = models.CharField("Author", max_length=50, null=False, blank=False)
     genre = models.CharField("Genre", max_length=20, null=False, blank=False)
-    location = models.CharField("Location", max_length=100, null=False, blank=False)
-    titlePgImg = models.CharField("Title Page Image", max_length=100, null=False, blank=False)
+    location = models.FileField("Location", null=False, blank=False, upload_to = "BookPDF/")
+    titlePgImg = models.ImageField("Title Page Image", null=False, blank=False, upload_to = "BookStore/")

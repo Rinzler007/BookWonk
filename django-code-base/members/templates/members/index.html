@@ -4,7 +4,7 @@
 {% block content %}
 <main>
 
-  <div class="slider-area slide-1" style="background-image: url('members/img/hero/hero_1.jpg');"
+  <div class="slider-area slide-1" style="background-image: url({% static 'members/img/hero/hero_1.jpg' %});"
     data-stellar-background-ratio="0.5">
     <div class="slider-active">
 
@@ -16,12 +16,18 @@
                 <span data-animation="fadeInLeft" data-delay=".1s" style="color: white;">Committed to reading</span>
                 <h1 data-animation="fadeInLeft" data-delay=".5s" style="color: white;">BookWonk
                 </h1>
-                <p data-animation="fadeInLeft" data-delay=".9s" style="color: white;">Knowledge is power.
-                  Information is liberating. Education is the premise of progress. Log In to continue to BookWonk
-                </p>
 
                 <div class="hero__btn" data-animation="fadeInLeft" data-delay="1.1s">
-                  <a href="login.html" class="btn hero-btn">Login</a>
+                  {% if user.is_authenticated %}
+                  <p data-animation="fadeInLeft" data-delay=".9s" style="color: white;">Knowledge is power.
+                    Welcome back {{ user.name }} !
+                  </p>
+                  {% else %}
+                  <p data-animation="fadeInLeft" data-delay=".9s" style="color: white;">Knowledge is power.
+                    Information is liberating. Education is the premise of progress. Log In to continue to BookWonk
+                  </p>
+                  <a href="login" class="btn hero-btn">Login</a>
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -37,12 +43,14 @@
                 <span data-animation="fadeInLeft" data-delay=".1s" style="color: white;">Committed to reading</span>
                 <h1 data-animation="fadeInLeft" data-delay=".5s" style="color: white;">Capstone 2021 | CPG 54
                 </h1>
+                {% if user.is_authenticated == False %}
                 <p data-animation="fadeInLeft" data-delay=".9s" style="color: white;">Sign Up to try out the new era
                   of learning and storing knowledge</p>
 
                 <div class="hero__btn" data-animation="fadeInLeft" data-delay="1.1s">
-                  <a href="signup.html" class="btn hero-btn">Sign Up</a>
+                  <a href="{% url 'signup' %}" class="btn hero-btn">Sign Up</a>
                 </div>
+                {% endif %}
               </div>
             </div>
           </div>
