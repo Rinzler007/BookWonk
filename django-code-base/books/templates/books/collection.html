@@ -66,7 +66,7 @@
                             <div class="brand-active brand-border pb-40">
                                 {% for book in books %}
                                 <div class="single-brand">
-                                    <a href="book.html"><img src="{{ book.titlePgImg.url }}" alt=""
+                                    <a href="{% url 'reader' %}"><img src="{{ book.titlePgImg.url }}" alt=""
                                             style="width: 200px; height: auto;"></a>
                                 </div>
                                 {% endfor %}
