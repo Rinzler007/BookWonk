@@ -2,124 +2,123 @@
 {% load static %}
 
 {% block content %}
-        <main>
+<main>
 
-            <div class="slider-area2">
-                <div class="slider-height2 hero-overly2 d-flex align-items-center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="hero-cap hero-cap2 text-center">
-                                    <h2>Collection</h2>
-                                </div>
-                            </div>
+    <div class="slider-area2">
+        <div class="slider-height2 hero-overly2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 text-center">
+                            <h2>Collection</h2>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="categories-area section-padding30">
+        </div>
+    </div>
+    <div class="categories-area section-padding30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="section-tittle mb-70">
+                        <span>For Everyone</span>
+                        <h2>Read Hardcopy</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+
+                    <a href="#" class="btn btn-green f-right" style="background-color: rgb(77, 212, 77);">Start
+                        Reading</a>
+                </div>
+                <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+
+                    <a href="#" class="btn btn-red f-right" style="background-color: rgb(226, 55, 49);">Stop
+                        Reading</a>
+                </div>
+                <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+
+                    <a href="#" class="btn btn-blue f-right" style="background-color: rgb(68, 170, 218);">Voice
+                        Commands</a>
+                </div>
+                <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+
+                    <a href="#" class="btn btn-yellow f-right" style="background-color: rgb(224, 226, 80);">Voice
+                        Notes</a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="section-tittle mb-70">
+                        <span>My Books</span>
+                        <h2>My Collection</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-area pb-140">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-
-                            <div class="section-tittle mb-70">
-                                <span>For Everyone</span>
-                                <h2>Read Hardcopy</h2>
-                            </div>
+                    <div class="brand-active brand-border pb-40">
+                        {% for book in books %}
+                        <div class="single-brand">
+                            <a href="{% url 'reader' %}#{{ book.bookName }}"><img src="{{ book.titlePgImg.url }}" alt=""
+                                    style="width: 200px; height: auto;" name="{{ book.bookName }}"></a>
                         </div>
+                        {% endfor %}
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
 
-                            <a href="#" class="btn btn-green f-right" style="background-color: rgb(77, 212, 77);">Start
-                                Reading</a>
-                        </div>
-                        <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                            <a href="#" class="btn btn-red f-right" style="background-color: rgb(226, 55, 49);">Stop
-                                Reading</a>
-                        </div>
-                        <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                            <a href="#" class="btn btn-blue f-right" style="background-color: rgb(68, 170, 218);">Voice
-                                Commands</a>
-                        </div>
-                        <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                            <a href="#" class="btn btn-yellow f-right"
-                                style="background-color: rgb(224, 226, 80);">Voice Notes</a>
-                        </div>
+                        <a href="#" class="btn btn-green f-right" style="background-color: rgb(77, 212, 77);">Add a Book
+                        </a>
                     </div>
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
 
-                            <div class="section-tittle mb-70">
-                                <span>My Books</span>
-                                <h2>My Collection</h2>
-                            </div>
-                        </div>
                     </div>
-                    <div class="brand-area pb-140">
-                        <div class="container">
-                            <div class="brand-active brand-border pb-40">
-                                {% for book in books %}
-                                <div class="single-brand">
-                                    <a href="{% url 'reader' %}"><img src="{{ book.titlePgImg.url }}" alt=""
-                                            style="width: 200px; height: auto;"></a>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+                    <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
 
-                                <a href="#" class="btn btn-green f-right"
-                                    style="background-color: rgb(77, 212, 77);">Add a Book
-                                </a>
-                            </div>
-                            <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                            </div>
-                            <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                            </div>
-                            <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                                <a href="#" class="btn btn-red f-right"
-                                    style="background-color: rgb(226, 55, 49);">Delete a Book
-                                </a>
-                            </div>
-                        </div>
                     </div>
+                    <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
 
+                        <a href="#" class="btn btn-red f-right" style="background-color: rgb(226, 55, 49);">Delete a
+                            Book
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="categories-area section-padding10">
+
+        </div>
+    </div>
+    <div class="categories-area section-padding10">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="section-tittle mb-70">
+                        <span>For Everyone</span>
+                        <h2>Global Collection</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-area pb-140">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-
-                            <div class="section-tittle mb-70">
-                                <span>For Everyone</span>
-                                <h2>Global Collection</h2>
-                            </div>
+                    <div class="brand-active brand-border pb-40">
+                        {% for book in books %}
+                        <div class="single-brand">
+                            <a href="book.html"><img src="{{ book.titlePgImg.url }}" alt=""
+                                    style="width: 200px; height: auto;"></a>
                         </div>
-                    </div>
-                    <div class="brand-area pb-140">
-                        <div class="container">
-                            <div class="brand-active brand-border pb-40">
-                                {% for book in books %}
-                                <div class="single-brand">
-                                    <a href="book.html"><img src="{{ book.titlePgImg.url }}" alt=""
-                                            style="width: 200px; height: auto;"></a>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </div>
+</main>
 {% endblock %}
