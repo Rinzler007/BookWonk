@@ -28,5 +28,5 @@ urlpatterns = [
     path('logout/', view=memberView.logoutView, name='logout'),
     path('signup/', view=memberView.signupView, name='signup'),
     path('collection/', view=bookView.collectionView, name='collection'),
-    path('book/', view=bookView.readerView, name='reader')
+    path('book/<bookName>', view=bookView.readerView, name='reader')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

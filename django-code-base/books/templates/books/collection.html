@@ -29,26 +29,36 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
 
-                    <a href="#" class="btn btn-green f-right" style="background-color: rgb(77, 212, 77);">Start
-                        Reading</a>
-                </div>
-                <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                    <a href="#" class="btn btn-red f-right" style="background-color: rgb(226, 55, 49);">Stop
-                        Reading</a>
-                </div>
-                <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                    <a href="#" class="btn btn-blue f-right" style="background-color: rgb(68, 170, 218);">Voice
-                        Commands</a>
-                </div>
-                <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
-
-                    <a href="#" class="btn btn-yellow f-right" style="background-color: rgb(224, 226, 80);">Voice
-                        Notes</a>
-                </div>
+                        <input type="submit" name="start_read" class="btn btn-green" style="background-color: rgb(77, 212, 77);" value="Start Reading"/>
+                    </div>
+                </form>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+    
+                        <input name="stop_read" class="btn btn-red" style="background-color: rgb(226, 55, 49);" value="Stop Reading" type="submit"/>
+                    </div>
+                </form>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+    
+                        <input name="voice_commands" class="btn btn-blue" style="background-color: rgb(68, 170, 218);" value="Voice Commands" type="submit"/>
+                    </div>
+                </form>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="col-lg-3 col-sm-12" style="margin-bottom: 10px;">
+    
+                        <input name="voice_notes" class="btn btn-yellow" style="background-color: rgb(224, 226, 80);" value="Voice Notes" type="submit"/>
+                    </div>
+                </form>   
+                    
+                
             </div>
             <br>
             <br>
@@ -66,7 +76,7 @@
                     <div class="brand-active brand-border pb-40">
                         {% for book in books %}
                         <div class="single-brand">
-                            <a href="{% url 'reader' %}#{{ book.bookName }}"><img src="{{ book.titlePgImg.url }}" alt=""
+                            <a href="{% url 'reader' book.bookName %}"><img src="{{ book.titlePgImg.url }}" alt=""
                                     style="width: 200px; height: auto;" name="{{ book.bookName }}"></a>
                         </div>
                         {% endfor %}
