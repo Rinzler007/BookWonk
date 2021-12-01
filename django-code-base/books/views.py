@@ -4,7 +4,10 @@ from django.http import HttpResponse
 from .models import Book
 import cv2
 import time
-
+from .BooksLib import ocr
+from pydub import AudioSegment
+from pydub.playback import play
+from gtts import gTTS
 # Create your views here.
 
 
@@ -20,14 +23,25 @@ def collectionView(request):
     cap = cv2.VideoCapture(0) # video capture source camera (Here webcam of laptop) 
     if 'start_read' in request.POST:
         print('Reading Starts')
-        while(True):
+        while img_counter < 10:
             ret,frame = cap.read() # return a single frame in variable `frame`
             if 'stop_read' in request.POST :
                 print("Hello from while loop")
             img_name = "img{}.png".format(img_counter)
             cv2.imwrite('ReadingNow/'+img_name,frame)
+            ocrObj = ocr.OCR()
+            text = ocrObj.ocr(frame)
+            print(text)
+            with open("ReadingNow/text{}.txt".format(img_counter), 'w') as f:
+                f.write(text)
+            language = 'en'
+            myobj = gTTS(text=text, lang=language, slow=False)
+            myobj.save("ReadingNow/tts.mp3")
+            tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
+            play(tts)
             img_counter += 1
-            time.sleep(2)
+            time.sleep(1)
+        img_counter = 0
     elif 'stop_read' in request.POST :
         print('Reading Ends')
         img_counter = 0
