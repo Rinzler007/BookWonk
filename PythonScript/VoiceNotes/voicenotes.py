@@ -6,5 +6,7 @@ with sr.Microphone() as source:
     print("Time over, thanks")
     try:
         print("Text: "+r.recognize_google(audio_text))
+        # with open('readme.txt', 'w') as f:
+        #         f.writelines(r.recognize_google(audio_text))
     except:
          print("Sorry, I did not get that")

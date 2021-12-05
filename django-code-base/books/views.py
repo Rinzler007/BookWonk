@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from .models import Book
 import cv2
 import time
+import speech_recognition as sr
+import pyaudio 
 
 # Create your views here.
 
@@ -27,7 +29,7 @@ def collectionView(request):
             img_name = "img{}.png".format(img_counter)
             cv2.imwrite('ReadingNow/'+img_name,frame)
             img_counter += 1
-            time.sleep(2)
+            time.sleep(10)
     elif 'stop_read' in request.POST :
         print('Reading Ends')
         img_counter = 0
@@ -36,6 +38,17 @@ def collectionView(request):
         print('Voice Command')
     elif 'voice_notes' in request.POST :
         print('Take voice notes')
+        r = sr.Recognizer()
+        with sr.Microphone() as source:
+            print("Talk")
+            audio_text = r.listen(source)
+            print("Time over, thanks")
+            try:
+                print("Text: "+r.recognize_google(audio_text))
+            except:
+                print("Sorry, I did not get that")
+            with open('Notes/readme.txt', 'w') as f:
+                f.writelines(audio_text)
     return render(request, 'books/collection.html', context)
 
 
