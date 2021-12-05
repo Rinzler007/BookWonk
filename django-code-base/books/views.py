@@ -4,16 +4,13 @@ from django.http import HttpResponse
 from .models import Book
 import cv2
 import time
-<<<<<<< HEAD
 import speech_recognition as sr
 import pyaudio 
 
-=======
 from .BooksLib import ocr
 from pydub import AudioSegment
 from pydub.playback import play
 from gtts import gTTS
->>>>>>> 93137b8ad59b2b756c45ba0907a007c67acdaba0
 # Create your views here.
 
 
@@ -46,12 +43,8 @@ def collectionView(request):
             tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
             play(tts)
             img_counter += 1
-<<<<<<< HEAD
-            time.sleep(10)
-=======
             time.sleep(1)
         img_counter = 0
->>>>>>> 93137b8ad59b2b756c45ba0907a007c67acdaba0
     elif 'stop_read' in request.POST :
         print('Reading Ends')
         img_counter = 0
