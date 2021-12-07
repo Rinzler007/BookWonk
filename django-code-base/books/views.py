@@ -5,7 +5,7 @@ from .models import Book
 import cv2
 import time
 import speech_recognition as sr
-import pyaudio 
+import pyaudio
 
 from .BooksLib import ocr
 from pydub import AudioSegment
@@ -23,15 +23,17 @@ def collectionView(request):
     print(context['books'])
     print(f"The GET req : {request}")
     img_counter = 0
-    cap = cv2.VideoCapture(0) # video capture source camera (Here webcam of laptop) 
+    # video capture source camera (Here webcam of laptop)
+    cap = cv2.VideoCapture(0)
     if 'start_read' in request.POST:
         print('Reading Starts')
         while img_counter < 10:
-            ret,frame = cap.read() # return a single frame in variable `frame`
-            if 'stop_read' in request.POST :
+            time.sleep(1)
+            ret, frame = cap.read()  # return a single frame in variable `frame`
+            if 'stop_read' in request.POST:
                 print("Hello from while loop")
             img_name = "img{}.png".format(img_counter)
-            cv2.imwrite('ReadingNow/'+img_name,frame)
+            cv2.imwrite('ReadingNow/'+img_name, frame)
             ocrObj = ocr.OCR()
             text = ocrObj.ocr(frame)
             print(text)
@@ -43,15 +45,64 @@ def collectionView(request):
             tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
             play(tts)
             img_counter += 1
-            time.sleep(1)
         img_counter = 0
-    elif 'stop_read' in request.POST :
+    elif 'stop_read' in request.POST:
         print('Reading Ends')
         img_counter = 0
         cap.release()
-    elif 'voice_commands' in request.POST :
+    elif 'voice_commands' in request.POST:
         print('Voice Command')
-    elif 'voice_notes' in request.POST :
+        r = sr.Recognizer()
+        with sr.Microphone() as source:
+            print("Talk")
+            audio_text = r.listen(source)
+            print("Time over, thanks")
+            try:
+                mytext = r.recognize_google(audio_text)
+                print("Text: "+mytext)
+                if mytext == 'start reading':
+                    print('Reading Starts')
+                    while img_counter < 10:
+                        time.sleep(1)
+                        ret, frame = cap.read()  # return a single frame in variable `frame`
+                        if 'stop_read' in request.POST:
+                            print("Hello from while loop")
+                        img_name = "img{}.png".format(img_counter)
+                        cv2.imwrite('ReadingNow/'+img_name, frame)
+                        ocrObj = ocr.OCR()
+                        text = ocrObj.ocr(frame)
+                        print(text)
+                        with open("ReadingNow/text{}.txt".format(img_counter), 'w') as f:
+                            f.write(text)
+                        language = 'en'
+                        myobj = gTTS(text=text, lang=language, slow=False)
+                        myobj.save("ReadingNow/tts.mp3")
+                        tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
+                        play(tts)
+                        img_counter += 1
+                    img_counter = 0
+                elif mytext == 'stop reading':
+                    print('Reading Ends')
+                    img_counter = 0
+                    cap.release()
+                elif mytext == 'voice notes':
+                    print('Take voice notes')
+                    r = sr.Recognizer()
+                    with sr.Microphone() as source:
+                        print("Talk")
+                        audio_text = r.listen(source)
+                        print("Time over, thanks")
+                        try:
+                            mytext = r.recognize_google(audio_text)
+                            print("Text: "+mytext)
+                            with open('Notes/readme.txt', 'a') as f:
+                                f.write("\n")
+                                f.write(mytext)
+                        except:
+                            print("Sorry, I did not get that")
+            except:
+                print("Sorry, I did not get that")
+    elif 'voice_notes' in request.POST:
         print('Take voice notes')
         r = sr.Recognizer()
         with sr.Microphone() as source:
@@ -59,11 +110,13 @@ def collectionView(request):
             audio_text = r.listen(source)
             print("Time over, thanks")
             try:
-                print("Text: "+r.recognize_google(audio_text))
+                mytext = r.recognize_google(audio_text)
+                print("Text: "+mytext)
+                with open('Notes/readme.txt', 'a') as f:
+                    f.write("\n")
+                    f.write(mytext)
             except:
                 print("Sorry, I did not get that")
-            with open('Notes/readme.txt', 'w') as f:
-                f.writelines(audio_text)
     return render(request, 'books/collection.html', context)
 
 
