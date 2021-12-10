@@ -12,6 +12,7 @@ from pydub import AudioSegment
 from pydub.playback import play
 from gtts import gTTS
 import os
+from PIL import Image
 # Create your views here.
 
 
@@ -49,11 +50,14 @@ def collectionView(request):
             except:
                 None
             img_counter += 1
+        pageList = []
         for files in os.listdir('ReadingNow/'):
             if files.endswith('.jpg'):
-                print(files) 
+                pageList.append(files) 
             else:
                 continue
+        im = Image.open('ReadingNow/')
+        im.save('ReadingNow/book.pdf', "PDF", resolution=100.0, save_all=True, append_images=pageList)
         img_counter = 0
     elif 'stop_read' in request.POST:
         print('Reading Ends')
