@@ -49,10 +49,16 @@ def collectionView(request):
                 myobj = gTTS(text=text, lang=language, slow=False)
                 myobj.save("ReadingNow/tts.mp3")
                 tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
-                play(tts)
+                # play(tts)
             except:
                 None
             img_counter += 1
+        fileM = open('ReadingNow/tts.txt')
+        textM = fileM.read()
+        myobj = gTTS(text=textM, lang=language, slow=False)
+        myobj.save("ReadingNow/tts.mp3")
+        tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
+        play(tts)
         im.save('ReadingNow/book.pdf', "PDF", resolution=100.0, save_all=True, append_images=pageList)
         pageList = []
         img_counter = 0
