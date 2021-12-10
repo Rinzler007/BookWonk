@@ -54,6 +54,7 @@ def collectionView(request):
                 None
             img_counter += 1
         im.save('ReadingNow/book.pdf', "PDF", resolution=100.0, save_all=True, append_images=pageList)
+        pageList = []
         img_counter = 0
     elif 'stop_read' in request.POST:
         print('Reading Ends')
