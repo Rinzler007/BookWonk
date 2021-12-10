@@ -29,6 +29,7 @@ def collectionView(request):
     cap = cv2.VideoCapture(0)
     if 'start_read' in request.POST:
         print('Reading Starts')
+        pageList = []
         while img_counter < 2:
             time.sleep(3)
             ret, frame = cap.read()  # return a single frame in variable `frame`
@@ -36,6 +37,8 @@ def collectionView(request):
                 print("Hello from while loop")
             img_name = "img{}.jpg".format(img_counter)
             cv2.imwrite('ReadingNow/'+img_name, frame)
+            im = Image.open('ReadingNow/'+img_name)
+            pageList.append(im)
             ocrObj = ocr.OCR()
             try:
                 text = ocrObj.ocr(frame)
@@ -50,13 +53,6 @@ def collectionView(request):
             except:
                 None
             img_counter += 1
-        pageList = []
-        for files in os.listdir('ReadingNow/'):
-            if files.endswith('.jpg'):
-                pageList.append(files) 
-            else:
-                continue
-        im = Image.open('ReadingNow/')
         im.save('ReadingNow/book.pdf', "PDF", resolution=100.0, save_all=True, append_images=pageList)
         img_counter = 0
     elif 'stop_read' in request.POST:
