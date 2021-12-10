@@ -40,11 +40,11 @@ void setup() {
 
 
   lcd.setCursor(0, 0);
-  lcd.print("  BOOK TURNING  ");
+  lcd.print("  BOOK WONK  ");
   delay(500);
 
   lcd.setCursor(0, 1);
-  lcd.print("     SYSTEM     ");
+  lcd.print("     PCPG54     ");
   delay(500);
 
   // attaches the servo on pin 9 to the servo object
@@ -68,13 +68,13 @@ void loop() {
     myservo6.write(180);
 
     //page holders
-    myservo2.write(160);
+    myservo2.write(168);
 
-    myservo4.write(8);
+    myservo4.write(17);
     delay(1000);
     
     //arm down
-    myservo5.write(0);
+    myservo5.write(4);
     delay(3000);
 
     //wheel turn
@@ -120,13 +120,13 @@ void loop() {
 
 
     //page holders
-    myservo2.write(160);
+    myservo2.write(168);
 
-    myservo4.write(8);
+    myservo4.write(17);
     delay(1000);
 
     //arm down
-    myservo5.write(180);
+    myservo5.write(176);
     delay(3000);
 
 

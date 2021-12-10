@@ -27,23 +27,26 @@ def collectionView(request):
     cap = cv2.VideoCapture(0)
     if 'start_read' in request.POST:
         print('Reading Starts')
-        while img_counter < 10:
-            time.sleep(1)
+        while img_counter < 2:
+            time.sleep(3)
             ret, frame = cap.read()  # return a single frame in variable `frame`
             if 'stop_read' in request.POST:
                 print("Hello from while loop")
             img_name = "img{}.png".format(img_counter)
             cv2.imwrite('ReadingNow/'+img_name, frame)
             ocrObj = ocr.OCR()
-            text = ocrObj.ocr(frame)
-            print(text)
-            with open("ReadingNow/text{}.txt".format(img_counter), 'w') as f:
-                f.write(text)
-            language = 'en'
-            myobj = gTTS(text=text, lang=language, slow=False)
-            myobj.save("ReadingNow/tts.mp3")
-            tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
-            play(tts)
+            try:
+                text = ocrObj.ocr(frame)
+                print(text)
+                with open("ReadingNow/text{}.txt".format(img_counter), 'w') as f:
+                    f.write(text)
+                language = 'en'
+                myobj = gTTS(text=text, lang=language, slow=False)
+                myobj.save("ReadingNow/tts.mp3")
+                tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
+                play(tts)
+            except:
+                None
             img_counter += 1
         img_counter = 0
     elif 'stop_read' in request.POST:
@@ -62,8 +65,8 @@ def collectionView(request):
                 print("Text: "+mytext)
                 if mytext == 'start reading':
                     print('Reading Starts')
-                    while img_counter < 10:
-                        time.sleep(1)
+                    while img_counter < 2:
+                        time.sleep(3)
                         ret, frame = cap.read()  # return a single frame in variable `frame`
                         if 'stop_read' in request.POST:
                             print("Hello from while loop")
