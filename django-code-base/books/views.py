@@ -11,6 +11,7 @@ from .BooksLib import ocr
 from pydub import AudioSegment
 from pydub.playback import play
 from gtts import gTTS
+import os
 # Create your views here.
 
 
@@ -32,7 +33,7 @@ def collectionView(request):
             ret, frame = cap.read()  # return a single frame in variable `frame`
             if 'stop_read' in request.POST:
                 print("Hello from while loop")
-            img_name = "img{}.png".format(img_counter)
+            img_name = "img{}.jpg".format(img_counter)
             cv2.imwrite('ReadingNow/'+img_name, frame)
             ocrObj = ocr.OCR()
             try:
@@ -48,6 +49,11 @@ def collectionView(request):
             except:
                 None
             img_counter += 1
+        for files in os.listdir('ReadingNow/'):
+            if files.endswith('.jpg'):
+                print(files) 
+            else:
+                continue
         img_counter = 0
     elif 'stop_read' in request.POST:
         print('Reading Ends')
@@ -90,6 +96,7 @@ def collectionView(request):
                     cap.release()
                 elif mytext == 'voice notes':
                     print('Take voice notes')
+                    time.sleep(2)
                     r = sr.Recognizer()
                     with sr.Microphone() as source:
                         print("Talk")
