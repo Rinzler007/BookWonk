@@ -26,7 +26,7 @@ def collectionView(request):
     print(f"The GET req : {request}")
     img_counter = 0
     # video capture source camera (Here webcam of laptop)
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     if 'start_read' in request.POST:
         print('Reading Starts')
         pageList = []
@@ -59,7 +59,8 @@ def collectionView(request):
         myobj.save("ReadingNow/tts.mp3")
         tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
         play(tts)
-        im.save('ReadingNow/book.pdf', "PDF", resolution=100.0, save_all=True, append_images=pageList)
+        im.save('ReadingNow/book.pdf', "PDF", resolution=100.0,
+                save_all=True, append_images=pageList)
         pageList = []
         img_counter = 0
     elif 'stop_read' in request.POST:
