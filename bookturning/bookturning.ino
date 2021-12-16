@@ -1,9 +1,6 @@
 
 #include <Servo.h>
 #include <LiquidCrystal.h>
-
-
-
 LiquidCrystal lcd( 7, 8, 9, 10, 11, 12);
 Servo myservo2;
 Servo myservo3;
@@ -11,9 +8,8 @@ Servo myservo4;
 Servo myservo5;
 Servo myservo6;
 
-
-
-void setup() {
+void setup() 
+{
 
   lcd.begin(16, 2);
 
@@ -50,7 +46,8 @@ void setup() {
   // attaches the servo on pin 9 to the servo object
 }
 
-void loop() {
+void loop() 
+{
 
   // left turn
 
@@ -101,9 +98,6 @@ void loop() {
     delay(500);
 
   }
-
-
-
 
   // right  turn
 
