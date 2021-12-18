@@ -27,7 +27,7 @@ def collectionView(request):
     img_counter = 0
     # video capture source camera (Here webcam of laptop)
     cap = cv2.VideoCapture(1)
-    if 'start_read' in request.POST:
+    if 'add_book_scan' in request.POST:
         print('Reading Starts')
         pageList = []
         while img_counter < 2:
@@ -63,10 +63,29 @@ def collectionView(request):
                 save_all=True, append_images=pageList)
         pageList = []
         img_counter = 0
+    return render(request, 'books/collection.html', context)
+
+
+def readerView(request, bookName):
+    print(bookName)
+    book = Book.objects.get(bookName=bookName)
+    context = {
+        'bookPDF': book,
+    }
+    print(book)
+    print(context['bookPDF'].location.url)
+    if 'start_read' in request.POST:
+        print("Reading Starts !")
+        language = 'en'
+        fileM = open('ReadingNow/tts.txt')
+        text = fileM.read()
+        myobj = gTTS(text=text, lang=language, slow=False)
+        myobj.save("ReadingNow/tts.mp3")
+        tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
+        play(tts)
+        
     elif 'stop_read' in request.POST:
         print('Reading Ends')
-        img_counter = 0
-        cap.release()
     elif 'voice_commands' in request.POST:
         print('Voice Command')
         r = sr.Recognizer()
@@ -78,30 +97,16 @@ def collectionView(request):
                 mytext = r.recognize_google(audio_text)
                 print("Text: "+mytext)
                 if mytext == 'start reading':
-                    print('Reading Starts')
-                    while img_counter < 2:
-                        time.sleep(3)
-                        ret, frame = cap.read()  # return a single frame in variable `frame`
-                        if 'stop_read' in request.POST:
-                            print("Hello from while loop")
-                        img_name = "img{}.png".format(img_counter)
-                        cv2.imwrite('ReadingNow/'+img_name, frame)
-                        ocrObj = ocr.OCR()
-                        text = ocrObj.ocr(frame)
-                        print(text)
-                        with open("ReadingNow/text{}.txt".format(img_counter), 'w') as f:
-                            f.write(text)
-                        language = 'en'
-                        myobj = gTTS(text=text, lang=language, slow=False)
-                        myobj.save("ReadingNow/tts.mp3")
-                        tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
-                        play(tts)
-                        img_counter += 1
-                    img_counter = 0
+                    print("Reading Starts !")
+                    language = 'en'
+                    fileM = open('ReadingNow/tts.txt')
+                    text = fileM.read()
+                    myobj = gTTS(text=text, lang=language, slow=False)
+                    myobj.save("ReadingNow/tts.mp3")
+                    tts = AudioSegment.from_mp3("ReadingNow/tts.mp3")
+                    play(tts)
                 elif mytext == 'stop reading':
                     print('Reading Ends')
-                    img_counter = 0
-                    cap.release()
                 elif mytext == 'voice notes':
                     print('Take voice notes')
                     time.sleep(2)
@@ -135,15 +140,4 @@ def collectionView(request):
                     f.write(mytext)
             except:
                 print("Sorry, I did not get that")
-    return render(request, 'books/collection.html', context)
-
-
-def readerView(request, bookName):
-    print(bookName)
-    book = Book.objects.get(bookName=bookName)
-    context = {
-        'bookPDF': book,
-    }
-    print(book)
-    print(context['bookPDF'].location.url)
     return render(request, 'books/book.html', context)
