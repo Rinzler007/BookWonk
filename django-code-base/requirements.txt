@@ -182,7 +182,7 @@ setuptools-scm==6.3.2
 six==1.16.0
 sklearn==0.0
 SpeechRecognition==3.8.1
-sqlparse==0.4.1
+sqlparse==0.4.2
 tablib==3.0.0
 threadpoolctl==3.0.0
 tifffile==2021.11.2
